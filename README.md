@@ -1,16 +1,16 @@
 # Twitter Screens
 
 This is sample Twitter App with 3 screens :
-Profile on click of thumbnail
-Menu on click of home icon
-Search on click of search icon
+-Profile on click of thumbnail,
+-Menu on click of home icon,
+-Search on click of search icon.
 
 ## Dependencies
 - React Native
 - NativeBase for UI Elements
 - 
 
-## Pre installations
+## Pre installations done to run the project
 - need Node, the React Native command line interface, Python2, a JDK, and Android Studio.
 Open an Administrator Command Prompt (right click Command Prompt and select "Run as Administrator"), 
 then run the following command:
@@ -39,6 +39,11 @@ List of devices attached
 Run your app
 $ react-native run-android
 
+## Clone Repository and Running on device/emulator
+- git clone https://github.com/priyarg/TwitterApp.git
+- cd TwitterApp
+- npm install (to install project dependencies)
+- react-native run-android (This will run the app on your connected emulator or development device)
 
 
 
