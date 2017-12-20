@@ -32,33 +32,51 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      selectedTab: "Timeline"
+      selectedTab: 0
     };
   }
 
-  //Code To change the header
+ //Code To change the header
+ 
   renderSelectedTab() {
-    switch (this.state.selectedTab) {
-      case 'Search':
-        return (<Header searchBar rounded style={{ backgroundColor: '#fff' }}>
-          <Item>
-            <Button transparent>
-              <Icon name='arrow-back' />
-            </Button>
-            <Input placeholder="Search Twitter" />
-          </Item>
-        </Header>);
-        break;
-      case 'Timeline':
-        return (<Header style={{ backgroundColor: '#fff' }} hasTabs><Item style={{ paddingRight: 250, borderBottomWidth: 0 }}>
-          <Button style={{ paddingTop: 15 }} transparent onPress={() => this.openDrawer()}>
+    console.log(this.state.selectedTab);
+
+    if (this.state.selectedTab == 0) {
+      return (<Header style={{ backgroundColor: '#fff' }} hasTabs><Item style={{ paddingRight: 250, borderBottomWidth: 0 }}>
+        <Button style={{ paddingTop: 15 }} transparent onPress={() => this.openDrawer()}>
+          <Thumbnail small source={require('./src/images/Tulips.jpg')} />
+        </Button>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', paddingLeft: 20 }}>Home</Text>
+      </Item></Header>);
+    } else if (this.state.selectedTab == 1) {
+      return (<Header searchBar rounded style={{ backgroundColor: '#fff' }}>
+        <Item>
+          <Button transparent>
+            <Icon name='arrow-back' />
+          </Button>
+          <Input placeholder="Search Twitter"/>
+        </Item>
+      </Header>);
+    } else if (this.state.selectedTab == 2) {
+      return (<Header style={{ backgroundColor: '#fff' }} hasTabs>
+        <Item style={{ paddingRight: 250, borderBottomWidth: 0 }}>
+          <Button style={{ paddingLeft: 20, paddingTop: 15 }} transparent onPress={() => this.openDrawer()}>
             <Thumbnail small source={require('./src/images/Tulips.jpg')} />
           </Button>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', paddingLeft: 20 }}>Home</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', paddingLeft: 20 }}>Messages</Text>
         </Item></Header>);
-        break;
-      default:
-        return (<Header style={{ backgroundColor: '#fff' }} hasTabs><Item style={{ paddingRight: 250, borderBottomWidth: 0 }}>
+    } else if (this.state.selectedTab == 3) {
+      return (<Header style={{ backgroundColor: '#fff' }} hasTabs>
+        <Item style={{ paddingRight: 250, borderBottomWidth: 0 }}>
+          <Button style={{ paddingLeft: 20, paddingTop: 15 }} transparent onPress={() => this.openDrawer()}>
+            <Thumbnail small source={require('./src/images/Tulips.jpg')} />
+          </Button>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', paddingLeft: 20 }}>Notifications</Text>
+        </Item></Header>);
+    }
+    else {
+      return (<Header style={{ backgroundColor: '#fff' }} hasTabs>
+        <Item style={{ paddingRight: 150, borderBottomWidth: 0 }}>
           <Button style={{ paddingTop: 15 }} transparent onPress={() => this.openDrawer()}>
             <Thumbnail small source={require('./src/images/Tulips.jpg')} />
           </Button>
@@ -85,7 +103,7 @@ export default class App extends Component {
         <StyleProvider style={getTheme(commonColor)}>
           <Container>
             {this.renderSelectedTab()}
-            <Tabs onChangeTab={({ i, ref, from })=> console.log(i)}  initialPage={0} tabBarUnderlineStyle={{ borderBottomWidth: 2 }}>            
+            <Tabs onChangeTab={({ i, ref, from }) => this.setState({ selectedTab: i })}  initialPage={0} tabBarUnderlineStyle={{ borderBottomWidth: 2 }}>            
               <Tab active={this.state.selectedTab === 'Timeline'} onChange={() => this.setState({ selectedTab: 'Timeline' })} heading={<TabHeading>                
                 <Icon style={{ color: '#333333' }} name="home" />               
               </TabHeading>}>
