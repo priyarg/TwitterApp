@@ -19,15 +19,7 @@ export default class search extends Component {
   render() {
     return (
       <StyleProvider style={getTheme(commonColor)}>
-        <Container>
-          <Header searchBar rounded style={{ backgroundColor: '#fff' }}>
-            <Item>
-              <Button transparent>
-                <Icon name='arrow-back' />
-              </Button>
-              <Input placeholder="Search Twitter" />
-            </Item>
-          </Header>
+        <Container>         
           <Content style={{ backgroundColor: '#f0f8ff' }}>
           </Content>
           <Footer>
